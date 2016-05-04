@@ -1,5 +1,18 @@
 language: node_js
 node_js:
 - 0.12.7
+
+branches:
+  except:
+    - gh-pages
+
 script:
 - make coverage
+
+after_success:
+- "./scripts/deploy-to-gh-pages.sh"
+
+env:
+  global:
+   - GITHUB_REPO: "gupta-tarun/ee-demo"
+   - secure: VWsTcyKxRB/NoQXEXWtddKcbpK7AdIlW+DJp6XEZkiWLpT92FaRoZQCHRV++CvM3SyQyFKcqOJVqTRInmPzE+thLUqJI9fuPs+/WiLP6PtqToHntvzOG1s6dOUa+5lVzt0S0PuP475SfRKf4NxswnyQGHczwxkVo9IAaFO5MXZ0i7cOnfgEuZ2mMLdM1Unk6t0jn2zb3b+mbLD79TYiYouHTHTXAGfV+WZMT1eYeQyEsI0lvL5gIjJRquKk4EOIPIvZdje0QKyKv3zJSwy7EW3WOG+2f1GRO0SUTVOxy5RTCXZg6S9t2uPNtF2DaWERCuX0KimIxIAntIWrPAJzYv4CpUd2fiu9lImsD5JheUZpIcUUjWDanNwF/TeEUdUYXDv07RVIo0Pg3SziFBBexLQi7bl0CfBSqiPLklLOG7QQZ56DXoWt5SavM6kLGpKcuHUIhgDSFcAUs6WTUmNQLsOQPbIWu1H1UvlZgFElOxWKws1s4oBhL8K7lFaLup4QFAfJe2ytafbACkzTH+v7EabAAUtEJJvy/0SLmgiv4yMgIrutL9ott7YYZqv/uw4Wej2RNpAfttrwOd9MPi6wc7tMT9yp48h4hY65Q5zBhGWsEtnQ1hJo2zafWGU+2+Qy3f4fqJ6TmaYJdGN1TbPRCO/P6Dz0gjgAJ48V8XXLoe2E=
